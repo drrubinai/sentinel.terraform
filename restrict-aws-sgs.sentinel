@@ -1,0 +1,17 @@
+import "tfplan"
+
+epam-default-security_group_ids = [
+  "sg-023ac26b",
+  "sg-06aabefd628700044",
+  "sg-06d308952492fc211",
+]
+
+main = rule {
+  all tfplan.resources.aws_security_group as _, instances {
+    all instances as _, sg {
+        all  sg.applied.vpc_security_group_ids  as is_it_allowed {
+          epam-default-security_group_ids  contains is_it_allowed
+        }
+    }
+  }
+}
