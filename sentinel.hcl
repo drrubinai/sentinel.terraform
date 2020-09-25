@@ -14,8 +14,8 @@ module "aws-functions" {
   source = "./aws-functions/aws-functions.sentinel"
 }
 
-policy "restrict-aws-cidr-blocks" {
-  source = "./restrict-aws-cidr-blocks.sentinel"
+policy "aws_security_groups_restrictions" {
+  source = "./aws_security_groups_restrictions.sentinel"
   enforcement_level = "hard-mandatory"
 }
 
